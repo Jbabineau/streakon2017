@@ -1,132 +1,93 @@
 ﻿using System;
-using NUnit.Framework;
+using Xunit;
 
 namespace Streakon.Domain.Tests
 {
-    [TestFixture]
+
     public class ScoreTest
     {
-        
-        [Test]
+        [Fact]
         public void CreateWithNullNameWillThrow()
         {
-            var ex = Assert.Throws<ArgumentNullException>(
-                new TestDelegate(CreateScoreWithNullName)
-            );
-            Assert.That(ex.Message, Is.EqualTo("Value cannot be null.\r\nParameter name: name"));
+            var ex = Assert.Throws<ArgumentNullException>(() => new Models.Score(0, 0, 0, 0, null));
+            Assert.Equal("Value cannot be null.\r\nParameter name: name", ex.Message);
         }
 
-        [Test]
+        [Fact]
         public void CreateWithEmptyNameWillThrow()
         {
-            var ex = Assert.Throws<ArgumentException>(
-                new TestDelegate(CreateScoreWithEmptyName));
-            Assert.That(ex.Message, Is.EqualTo("name cannot be empty."));
+            var ex = Assert.Throws<ArgumentException>(() => new Models.Score(0, 0, 0, 0, string.Empty));
+            Assert.Equal("name cannot be empty.", ex.Message);
         }
 
-        [Test]
+        [Fact]
         public void CreateWithNegativeScoreWillThrow()
         {
-            var ex = Assert.Throws<ArgumentException>(
-                new TestDelegate(CreateScoreWithNegativeScore));
-            Assert.That(ex.Message, Is.EqualTo("score cannot be negative."));
+            var ex = Assert.Throws<ArgumentException>(() => new Models.Score(-1, 0, 0, 0, "a"));
+            Assert.Equal("score cannot be negative.", ex.Message);
         }
 
-        [Test]
+        [Fact]
         public void CreateWithNegativeKillsWillThrow()
         {
-            var ex = Assert.Throws<ArgumentException>(
-                new TestDelegate(CreateScoreWithNegativeKills));
-            Assert.That(ex.Message, Is.EqualTo("kills cannot be negative."));
+            var ex = Assert.Throws<ArgumentException>(() => new Models.Score(0, -1, 0, 0, "a"));
+            Assert.Equal("kills cannot be negative.", ex.Message);
         }
 
-        [Test]
+        [Fact]
         public void CreateWithNegativeBlocksWillThrow()
         {
-            var ex = Assert.Throws<ArgumentException>(
-                new TestDelegate(CreateScoreWithNegativeBlocks));
-            Assert.That(ex.Message, Is.EqualTo("blocks cannot be negative."));
+            var ex = Assert.Throws<ArgumentException>(() => new Models.Score(0, 0, -1, 0, "a"));
+            Assert.Equal("blocks cannot be negative.", ex.Message);
         }
 
-        [Test]
+        [Fact]
         public void CreateWithNegativeMissesWillThrow()
         {
-            var ex = Assert.Throws<ArgumentException>(
-                new TestDelegate(CreateScoreWithNegativeMisses));
-            Assert.That(ex.Message, Is.EqualTo("misses cannot be negative."));
+            var ex = Assert.Throws<ArgumentException>(() => new Models.Score(0, 0, 0, -1, "a"));
+            Assert.Equal("misses cannot be negative.", ex.Message);
         }
 
-        [Test]
+        [Fact]
         public void ScoreWillMatchConstructorArgument()
         {
             int expectedScore = 1;
             var score = new Models.Score(expectedScore, 0, 0, 0, "a");
-            Assert.That(expectedScore, Is.EqualTo(score.PlayerScore));
+            Assert.Equal(expectedScore, score.PlayerScore);
         }
 
-        [Test]
+        [Fact]
         public void KillsWillMatchConstructorArgument()
         {
             int expectedKills = 100;
             var score = new Models.Score(0, expectedKills, 0, 0, "a");
-            Assert.That(expectedKills, Is.EqualTo(score.Kills));
+            Assert.Equal(expectedKills, score.Kills);
         }
 
-        [Test]
+        [Fact]
         public void BlocksWillMatchConstructorArgument()
         {
             int expectedBlocks = 1;
             var score = new Models.Score(0, 0, expectedBlocks, 0, "a");
-            Assert.That(expectedBlocks, Is.EqualTo(score.Blocks));
+            Assert.Equal(expectedBlocks, score.Blocks);
         }
 
-        [Test]
+        [Fact]
         public void MissesWillMatchConstructorArgument()
         {
             int expectedMisses = 12;
             var score = new Models.Score(0, 0, 0, expectedMisses, "a");
-            Assert.That(expectedMisses, Is.EqualTo(score.Misses));
+            Assert.Equal(expectedMisses, score.Misses);
         }
 
-        [Test]
+        [Fact]
         public void NameWillMatchConstructoArgument()
         {
             string expectedName = "Jimmy Babs";
             var score = new Models.Score(0, 0, 0, 0, expectedName);
-            Assert.That(expectedName, Is.EqualTo(score.Name));
+            Assert.Equal(expectedName, score.Name);
         }
 
-        #region TestDelegates
-        void CreateScoreWithNullName()
-        {
-            var modelScore = new Models.Score(0, 0, 0, 0, null);
-        }
-
-        void CreateScoreWithEmptyName()
-        {
-            var modelScore = new Models.Score(0, 0, 0, 0, string.Empty);
-        }
-
-        void CreateScoreWithNegativeScore()
-        {
-            var modelScore = new Models.Score(-1, 0, 0, 0, "a");
-        }
-
-        void CreateScoreWithNegativeKills()
-        {
-            var modelScore = new Models.Score(0, -1, 0, 0, "a");
-        }
-
-        void CreateScoreWithNegativeBlocks()
-        {
-            var modelScore = new Models.Score(0, 0, -1, 0, "a");
-        }
-
-        void CreateScoreWithNegativeMisses()
-        {
-            var modelScore = new Models.Score(0, 0, 0, -1, "a");
-        }
-        #endregion
     }
 
 }
