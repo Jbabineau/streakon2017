@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Highscores</h2>
+
+<div>
+    <%foreach (var highScore in this.Model.HighScores)
+    {%>
+    <div><%this.Html.Encode(highScore.Summary) %></div>
+    <% }
+    %>
+</div>

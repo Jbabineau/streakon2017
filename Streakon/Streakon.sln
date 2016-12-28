@@ -3,7 +3,54 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Streakon.Domain", "Streakon.Domain\Streakon.Domain.csproj", "{B185DA02-DAAC-4F5A-8441-E74B89252C44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Streakon.WebPresentation", "Streakon.WebPresentation\Streakon.WebPresentation.csproj", "{8DCC6200-4D3A-4CB4-BE32-AD69C92C9862}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Streakon.Web", "Streakon.Web\Streakon.Web.csproj", "{FEEC4F75-12DD-4C1A-97CD-54F2D7DC20F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Streakon.SqlDataAccess", "Streakon.SqlDataAccess\Streakon.SqlDataAccess.csproj", "{F9AD291F-9428-4793-AD89-9DCEFB50DC9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Streakon.Domain.Tests", "Streakon.Domain.Tests\Streakon.Domain.Tests.csproj", "{B680A9CD-4B41-40CE-91B8-CB7273EB63AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Streakon.WebPresentation.Tests", "Streakon.WebPresentation.Tests\Streakon.WebPresentation.Tests.csproj", "{E74850ED-2C0E-4BE4-8E5E-E0CA8C65E4F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F1336636-D1F1-4404-B9F2-45CA9C990BCE}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B185DA02-DAAC-4F5A-8441-E74B89252C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B185DA02-DAAC-4F5A-8441-E74B89252C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B185DA02-DAAC-4F5A-8441-E74B89252C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B185DA02-DAAC-4F5A-8441-E74B89252C44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DCC6200-4D3A-4CB4-BE32-AD69C92C9862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DCC6200-4D3A-4CB4-BE32-AD69C92C9862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DCC6200-4D3A-4CB4-BE32-AD69C92C9862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DCC6200-4D3A-4CB4-BE32-AD69C92C9862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEEC4F75-12DD-4C1A-97CD-54F2D7DC20F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEEC4F75-12DD-4C1A-97CD-54F2D7DC20F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEEC4F75-12DD-4C1A-97CD-54F2D7DC20F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEEC4F75-12DD-4C1A-97CD-54F2D7DC20F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9AD291F-9428-4793-AD89-9DCEFB50DC9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9AD291F-9428-4793-AD89-9DCEFB50DC9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9AD291F-9428-4793-AD89-9DCEFB50DC9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9AD291F-9428-4793-AD89-9DCEFB50DC9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B680A9CD-4B41-40CE-91B8-CB7273EB63AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B680A9CD-4B41-40CE-91B8-CB7273EB63AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B680A9CD-4B41-40CE-91B8-CB7273EB63AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B680A9CD-4B41-40CE-91B8-CB7273EB63AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E74850ED-2C0E-4BE4-8E5E-E0CA8C65E4F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E74850ED-2C0E-4BE4-8E5E-E0CA8C65E4F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E74850ED-2C0E-4BE4-8E5E-E0CA8C65E4F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E74850ED-2C0E-4BE4-8E5E-E0CA8C65E4F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
