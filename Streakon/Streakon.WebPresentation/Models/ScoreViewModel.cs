@@ -11,12 +11,23 @@ namespace Streakon.WebPresentation.Models
     {
         public ScoreViewModel(Score score)
         {
-
+            PlayerScore = score.PlayerScore;
+            Kills = score.Kills;
+            Blocks = score.Blocks;
+            Misses = score.Misses;
+            PlayerName = score.Name;
         }
+
+        public int PlayerScore { get; set; }
+        public int Kills { get; set; }
+        public int Blocks { get; set; }
+        public int Misses { get; set; }
+        public string PlayerName { get; set; }
+
 
         public string SummaryText()
         {
-            string result = string.Empty;
+            string result = $"{PlayerName} scored {PlayerScore} points, killed the opponent {Kills} times, blocked them {Blocks} times and missed {Misses} times.";
             return result;
         }
     }

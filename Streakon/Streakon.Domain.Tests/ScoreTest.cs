@@ -87,7 +87,6 @@ namespace Streakon.Domain.Tests
             var score = new Models.Score(0, 0, 0, 0, expectedName);
             Assert.Equal(expectedName, score.Name);
         }
-
     }
 
 }
