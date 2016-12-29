@@ -1,6 +1,7 @@
 ﻿using Xunit;
-using Streakon.WebPresentation;
-using Streakon.Domain;
+using Streakon.WebPresentation.Models;
+using Streakon.Domain.Models;
+using Ploeh.AutoFixture;
 
 namespace Streakon.WebPresentation.Tests
 {
@@ -9,94 +10,158 @@ namespace Streakon.WebPresentation.Tests
         [Fact]
         public void NameWillMatchConstructor()
         {
-            string expectedName = "Jamie";
-            Models.ScoreViewModel vm = new Models.ScoreViewModel(new Domain.Models.Score(0, 0, 0, 0, expectedName));
-            Assert.Equal(expectedName, vm.PlayerName);
+            var fixture = new Fixture();
+            var score = fixture.Create<Score>();
+            var expectedName = score.Name;
+            var sut = fixture.Build<ScoreViewModel>()
+                .FromFactory(() => new ScoreViewModel(score))
+                .OmitAutoProperties()
+                .Create();
+
+            var result = sut.PlayerName;
+
+            Assert.Equal(expectedName, result);
         }
 
         [Fact]
         public void ScoreWillMatchConstructor()
         {
-            int expectedPlayerScore = 123;
-            Models.ScoreViewModel vm = new Models.ScoreViewModel(new Domain.Models.Score(expectedPlayerScore, 0, 0, 0, "Jamie"));
-            Assert.Equal(expectedPlayerScore, vm.PlayerScore);
+            var fixture = new Fixture();
+            var score = fixture.Create<Score>();
+            var expectedScore = score.PlayerScore;
+            var sut = fixture.Build<ScoreViewModel>()
+                .FromFactory(() => new ScoreViewModel(score))
+                .OmitAutoProperties()
+                .Create();
+
+            var result = sut.PlayerScore;
+
+            Assert.Equal(expectedScore, result);
         }
 
         [Fact]
         public void KillsWillMatchConstructor()
         {
-            int expectedKills = 3;
-            Models.ScoreViewModel vm = new Models.ScoreViewModel(new Domain.Models.Score(0, expectedKills, 0, 0, "Jamie"));
-            Assert.Equal(expectedKills, vm.Kills);
+            var fixture = new Fixture();
+            var score = fixture.Create<Score>();
+            var expectedKills = score.Kills;
+            var sut = fixture.Build<ScoreViewModel>()
+                .FromFactory(() => new ScoreViewModel(score))
+                .OmitAutoProperties()
+                .Create();
+
+            var result = sut.Kills;
+
+            Assert.Equal(expectedKills, result);
         }
 
         [Fact]
         public void BlocksWillMatchConstructor()
         {
-            int expectedBlocks = 83;
-            Models.ScoreViewModel vm = new Models.ScoreViewModel(new Domain.Models.Score(0, 0, expectedBlocks, 0, "Jamie"));
-            Assert.Equal(expectedBlocks, vm.Blocks);
+            var fixture = new Fixture();
+            var score = fixture.Create<Score>();
+            var expectedBlocks = score.Blocks;
+            var sut = fixture.Build<ScoreViewModel>()
+                .FromFactory(() => new ScoreViewModel(score))
+                .OmitAutoProperties()
+                .Create();
+
+            var result = sut.Blocks;
+
+            Assert.Equal(expectedBlocks, result);
         }
 
         [Fact]
         public void MissesWillMatchConstructor()
         {
-            int expectedMisses = 19;
-            Models.ScoreViewModel vm = new Models.ScoreViewModel(new Domain.Models.Score(0, 0, 0, expectedMisses, "Jamie"));
-            Assert.Equal(expectedMisses, vm.Misses);
+            var fixture = new Fixture();
+            var score = fixture.Create<Score>();
+            var expectedMisses = score.Misses;
+            var sut = fixture.Build<ScoreViewModel>()
+                .FromFactory(() => new ScoreViewModel(score))
+                .OmitAutoProperties()
+                .Create();
+
+            var result = sut.Misses;
+
+            Assert.Equal(expectedMisses, result);
         }
 
         [Fact]
         public void NameIsWellBehavedWritableProperty()
         {
-            var expectedName = "Jamie";
-            Models.ScoreViewModel vm = new Models.ScoreViewModel(new Domain.Models.Score(0, 0, 0, 0, "Test"));
-            vm.PlayerName = expectedName;
-            Assert.Equal(expectedName, vm.PlayerName);
+            var fixture = new Fixture();
+            var sut = fixture.Create<ScoreViewModel>();
+            string expectedName = fixture.Create<string>();
+
+            sut.PlayerName = expectedName;
+            string result = sut.PlayerName;
+
+            Assert.Equal(expectedName, result);
         }
 
         [Fact]
         public void ScoreIsWellBehavedWritableProperty()
         {
-            int expectedPlayerScore = 10;
-            Models.ScoreViewModel vm = new Models.ScoreViewModel(new Domain.Models.Score(0, 0, 0, 0, "Jamie"));
-            vm.PlayerScore = expectedPlayerScore;
-            Assert.Equal(expectedPlayerScore, vm.PlayerScore);
+            var fixture = new Fixture();
+            var sut = fixture.Create<ScoreViewModel>();
+            int expectedScore = fixture.Create<int>();
+
+            sut.PlayerScore = expectedScore;
+            int result = sut.PlayerScore;
+
+            Assert.Equal(expectedScore, result);
         }
 
         [Fact]
         public void KillsIsWellBehavedWritableProperty()
         {
-            int expectedKills = 3;
-            Models.ScoreViewModel vm = new Models.ScoreViewModel(new Domain.Models.Score(0, 0, 0, 0, "Jamie"));
-            vm.Kills = expectedKills;
-            Assert.Equal(expectedKills, vm.Kills);
+            var fixture = new Fixture();
+            var sut = fixture.Create<ScoreViewModel>();
+            int expectedKills = fixture.Create<int>();
+
+            sut.Kills = expectedKills;
+            int result = sut.Kills;
+
+            Assert.Equal(expectedKills, result);
         }
 
         [Fact]
         public void BlocksIsWellBehavedWritableProperty()
         {
-            int expectedBlocks = 12;
-            Models.ScoreViewModel vm = new Models.ScoreViewModel(new Domain.Models.Score(0, 0, 0, 0, "Jamie"));
-            vm.Blocks = expectedBlocks;
-            Assert.Equal(expectedBlocks, vm.Blocks);
+            var fixture = new Fixture();
+            var sut = fixture.Create<ScoreViewModel>();
+            int expectedBlocks = fixture.Create<int>();
+
+            sut.Blocks = expectedBlocks;
+            int result = sut.Blocks;
+
+            Assert.Equal(expectedBlocks, result);
         }
 
         [Fact]
         public void MissesIsWellBehavedWritableProperty()
         {
-            int expectedMisses = 9823;
-            Models.ScoreViewModel vm = new Models.ScoreViewModel(new Domain.Models.Score(0, 0, 0, 0, "Jamie"));
-            vm.Misses = expectedMisses;
-            Assert.Equal(expectedMisses, vm.Misses);
+            var fixture = new Fixture();
+            var sut = fixture.Create<ScoreViewModel>();
+            int expectedMisses = fixture.Create<int>();
+
+            sut.Misses = expectedMisses;
+            int result = sut.Misses;
+
+            Assert.Equal(expectedMisses, result);
         }
 
         [Fact]
         public void SummaryTextWillBeCorrect()
         {
-            Models.ScoreViewModel vm = new Models.ScoreViewModel(new Domain.Models.Score(16, 2, 0, 19, "Jamie"));
-            string expectedSummary = "Jamie scored 16 points, killed the opponent 2 times, blocked them 0 times and missed 19 times.";
-            Assert.Equal(expectedSummary, vm.SummaryText());
+            var fixture = new Fixture();
+            var sut = fixture.Create<ScoreViewModel>();
+            string expectedSummaryText = $"{sut.PlayerName} scored {sut.PlayerScore} points, killed the opponent {sut.Kills} times, blocked them {sut.Blocks} times and missed {sut.Misses} times.";
+            
+            string result = sut.SummaryText();
+            
+            Assert.Equal<string>(expectedSummaryText, result);
         }
     }
 }
