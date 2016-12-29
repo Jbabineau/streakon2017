@@ -3,7 +3,7 @@ using Xunit;
 using Ploeh.AutoFixture;
 using Streakon.Domain.Models;
 
-namespace Streakon.Domain.Tests
+namespace Streakon.Domain.Tests.Models
 {
 
     public class ScoreTest
